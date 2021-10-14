@@ -28,6 +28,8 @@ public class Employee {
 		this.cnp       = "";
 		this.function  = DidacticFunction.ASISTENT;
 		this.salary    = 0.0d;
+		this.id=0;
+
 	}
 	
 	/**
@@ -157,7 +159,7 @@ public class Employee {
 				employee.setFunction(DidacticFunction.CONFERENTIAR);
 
 			employee.setSalary(Double.valueOf(attributes[SALARY_INDEX]));
-			//employee.setId(Integer.valueOf(attributes[ID]));
+			employee.setId(Integer.valueOf(attributes[ID]));
 			employee.setId(Integer.valueOf(line));
 
 			if (!validator.isValid(employee)) {
