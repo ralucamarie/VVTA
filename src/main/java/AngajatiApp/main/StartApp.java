@@ -1,14 +1,15 @@
 package AngajatiApp.main;
 
 import AngajatiApp.controller.DidacticFunction;
-import AngajatiApp.model.Employee;
+import AngajatiApp.controller.EmployeeController;
 import AngajatiApp.repository.EmployeeImpl;
-//import repository.EmployeeMock;
 import AngajatiApp.repository.EmployeeRepositoryInterface;
+
+import AngajatiApp.model.Employee;
 
 import java.util.Scanner;
 
-import AngajatiApp.controller.EmployeeController;
+//import repository.EmployeeMock;
 
 //functionalitati
 //i.	 adaugarea unui nou angajat (nume, prenume, CNP, functia didactica, salariul de incadrare);
