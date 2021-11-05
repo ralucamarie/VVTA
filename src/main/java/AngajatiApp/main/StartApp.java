@@ -1,15 +1,14 @@
 package AngajatiApp.main;
 
 import AngajatiApp.controller.DidacticFunction;
-import AngajatiApp.controller.EmployeeController;
-import AngajatiApp.repository.EmployeeImpl;
-import AngajatiApp.repository.EmployeeRepositoryInterface;
-
 import AngajatiApp.model.Employee;
+import AngajatiApp.repository.EmployeeImpl;
+//import repository.EmployeeMock;
+import AngajatiApp.repository.EmployeeRepositoryInterface;
 
 import java.util.Scanner;
 
-//import repository.EmployeeMock;
+import AngajatiApp.controller.EmployeeController;
 
 //functionalitati
 //i.	 adaugarea unui nou angajat (nume, prenume, CNP, functia didactica, salariul de incadrare);
@@ -60,17 +59,26 @@ public class StartApp {
 	}
 
 	private static Employee getEmployeeFromInput() {
+		Employee employee=new Employee();
+		System.out.println("Id: ");
+		int id = scanner.nextInt();
+		employee.setId(id);
 		System.out.println("First name: ");
 		String firstName = scanner.next();
+		employee.setFirstName(firstName);
 		System.out.println("Last name: ");
 		String lastName = scanner.next();
+		employee.setLastName(lastName);
 		System.out.println("CNP: ");
 		String cnp = scanner.next();
+		employee.setCnp(cnp);
 		System.out.println("Functie didactica: ");
 		String didacticFuntion = scanner.next();
+		employee.setFunction(getDidacticFunction(didacticFuntion));
 		System.out.println("Salary: ");
 		Double salary = scanner.nextDouble();
-		return new Employee(firstName, lastName, cnp, getDidacticFunction(didacticFuntion), salary);
+		employee.setSalary(salary);
+		return employee;
 	}
 	
 	private static DidacticFunction getDidacticFunction(String didacticFunction) {

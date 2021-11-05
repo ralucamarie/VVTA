@@ -43,8 +43,11 @@ public class EmployeeImpl implements EmployeeRepositoryInterface {
 	}
 
 	@Override
-	public void modifyEmployeeFunction(Employee oldEmployee, DidacticFunction newFunction) {
+	public boolean modifyEmployeeFunction(Employee oldEmployee, DidacticFunction newFunction) {
 		oldEmployee.setFunction(newFunction);
+		if (oldEmployee.getFunction().equals(newFunction)) {
+			return true;
+		}else return false;
 	}
 	
 	private List<Employee> loadEmployeesFromFile() {
@@ -66,7 +69,6 @@ public class EmployeeImpl implements EmployeeRepositoryInterface {
 		} 
 		return employeeList;
 	}
-
 
 	@Override
 	public List<Employee> getEmployeeList() {

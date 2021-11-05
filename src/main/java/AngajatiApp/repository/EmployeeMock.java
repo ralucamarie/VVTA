@@ -16,13 +16,18 @@ public class EmployeeMock implements EmployeeRepositoryInterface {
 		employeeValidator = new EmployeeValidator();
 		employeeList = new ArrayList<Employee>();
 		
-		Employee Ionel = new Employee("Marius", "Pacuraru", "1234567890876", DidacticFunction.ASISTENT, 2500d);
+		Employee Ionel = new Employee("Marius", "Pacuraru", "1234567890876", DidacticFunction.LECTURER, 2500d);
 		Employee Mihai = new Employee("Ion", "Dumitrescu", "1234567890876", DidacticFunction.LECTURER, 2500d);
 		Employee Ionela = new Employee("Gicu", "Ionescu", "1234567890876", DidacticFunction.LECTURER, 2500d);
 		Employee Mihaela = new Employee("Dodel", "Pacuraru", "1234567890876", DidacticFunction.ASISTENT, 2500d);
 		Employee Vasile = new Employee("Dorel", "Georgescu", "1234567890876", DidacticFunction.TEACHER, 2500d);
 		Employee Marin   = new Employee("Larson", "Puscas", "1234567890876", DidacticFunction.TEACHER,  2500d);
-		
+		Ionel.setId(1);
+		Mihai.setId(2);
+		Ionela.setId(3);
+		Mihaela.setId(4);
+		Vasile.setId(5);
+		Marin.setId(6);
 		employeeList.add(Ionel);
 		employeeList.add(Mihai);
 		employeeList.add(Ionela);
@@ -50,18 +55,21 @@ public class EmployeeMock implements EmployeeRepositoryInterface {
 	 * Modifica atributul 'functia didactica' pentru un angajat dat
 	 * @param employee - anagajtul eptnru care se modifica atributul 'functia didactica'
 	 * @param newFunction - noua functie didactica (ASISTENT, LECTURER, TEACHER, CONFERENTIAR)
+	 * @return
 	 */
 	@Override
-	public void modifyEmployeeFunction(Employee employee, DidacticFunction newFunction) {
-
+	public boolean modifyEmployeeFunction(Employee employee, DidacticFunction newFunction) {
+		Boolean modif=false;
 		if (employee!=null) {
 			int i = 0;
 			while (i < employeeList.size()) {
-				if (employeeList.get(i).getId() == employee.getId())
+				if (employeeList.get(i).getId() == employee.getId()){
 					employeeList.get(i).setFunction(newFunction);
+					modif=true;
+				}
 				i++;
 			}
-		}
+		}return modif;
 	}
 
 	@Override
@@ -75,9 +83,14 @@ public class EmployeeMock implements EmployeeRepositoryInterface {
 		return null;
 	}
 
+
 	@Override
 	public Employee findEmployeeById(int idOldEmployee) {
-		// TODO Auto-generated method stub
+		for (Employee employee : employeeList) {
+			if (employee.getId() == idOldEmployee) {
+				return employee;
+			}
+		}
 		return null;
 	}
 
